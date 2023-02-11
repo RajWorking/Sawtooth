@@ -24,6 +24,13 @@ services:
       - validator
     entrypoint: settings-tp -vv -C tcp://validator:4004
 
+  tp:
+    image: tp
+    container_name: sawtooth-tp
+    command: python3 transaction_processor.py tcp://sawtooth-validator-default:4004
+    depends_on:
+    - validator
+
   intkey-tp-python:
     image: hyperledger/sawtooth-intkey-tp-python:chime
     container_name: sawtooth-intkey-tp-python-default

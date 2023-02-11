@@ -45,8 +45,7 @@ class CustomTransactionHandler(TransactionHandler):
 
 
 def main():
-    # processor = TransactionProcessor(url="tcp://sawtooth-validator-default-{}:4004".format(sys.argv[1]))
-    processor = TransactionProcessor(url="tcp://localhost:4004")
+    processor = TransactionProcessor(url=sys.argv[1])
     processor.add_handler(CustomTransactionHandler())
     processor.start()
 
