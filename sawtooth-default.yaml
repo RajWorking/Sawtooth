@@ -29,7 +29,7 @@ services:
     container_name: sawtooth-tp
     command: python3 transaction_processor.py tcp://sawtooth-validator-default:4004
     depends_on:
-    - validator
+      - validator
 
   intkey-tp-python:
     image: hyperledger/sawtooth-intkey-tp-python:chime

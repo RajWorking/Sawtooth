@@ -176,6 +176,8 @@ services:
       - 4004
       - 5050
       - 8800
+    ports:
+      - "4014:4004"
     volumes:
       - pbft-shared:/pbft-shared
     command: |
@@ -209,6 +211,8 @@ services:
       - 4004
       - 5050
       - 8800
+    ports:
+      - "4024:4004"
     volumes:
       - pbft-shared:/pbft-shared
     command: |
@@ -243,6 +247,8 @@ services:
       - 4004
       - 5050
       - 8800
+    ports:
+      - "4034:4004"
     volumes:
       - pbft-shared:/pbft-shared
     command: |
@@ -278,6 +284,8 @@ services:
       - 4004
       - 5050
       - 8800
+    ports:
+      - "4044:4004"
     volumes:
       - pbft-shared:/pbft-shared
     command: |
@@ -341,37 +349,37 @@ services:
 
 # -------------=== transaction processors ===-------------
 
-  tp-0:
-    image: tp
-    container_name: sawtooth-tp-0
-    command: python3 transaction_processor.py tcp://validator-0:4004
-    depends_on:
-    - validator-0
+  # tp-0:
+  #   image: tp
+  #   container_name: sawtooth-tp-0
+  #   command: python3 transaction_processor.py tcp://validator-0:4004
+  #   depends_on:
+  #   - validator-0
   
-  tp-1:
-    image: tp
-    container_name: sawtooth-tp-1
-    command: python3 transaction_processor.py tcp://validator-1:4004
-    depends_on:
-    - validator-1
+  # tp-1:
+  #   image: tp
+  #   container_name: sawtooth-tp-1
+  #   command: python3 transaction_processor.py tcp://validator-1:4004
+  #   depends_on:
+  #   - validator-1
 
-  tp-2:
-    image: tp
-    container_name: sawtooth-tp-2
-    command: python3 transaction_processor.py tcp://validator-2:4004
-    depends_on:
-    - validator-2
+  # tp-2:
+  #   image: tp
+  #   container_name: sawtooth-tp-2
+  #   command: python3 transaction_processor.py tcp://validator-2:4004
+  #   depends_on:
+  #   - validator-2
 
-  tp-3:
-    image: tp
-    container_name: sawtooth-tp-3
-    command: python3 transaction_processor.py tcp://validator-3:4004
-    depends_on:
-    - validator-3
+  # tp-3:
+  #   image: tp
+  #   container_name: sawtooth-tp-3
+  #   command: python3 transaction_processor.py tcp://validator-3:4004
+  #   depends_on:
+  #   - validator-3
 
-  tp-4:
-    image: tp
-    container_name: sawtooth-tp-4
-    command: python3 transaction_processor.py tcp://validator-4:4004
-    depends_on:
-    - validator-4
+  # tp-4:
+  #   image: tp
+  #   container_name: sawtooth-tp-4
+  #   command: python3 transaction_processor.py tcp://validator-4:4004
+  #   depends_on:
+  #   - validator-4
