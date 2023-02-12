@@ -22,7 +22,7 @@ services:
 # -------------=== rest api ===-------------
 
   rest-api-0:
-    image: hyperledger/sawtooth-rest-api:nightly
+    image: hyperledger/sawtooth-rest-api
     container_name: sawtooth-rest-api-default-0
     expose:
       - 8008
@@ -37,7 +37,7 @@ services:
     stop_signal: SIGKILL
 
   rest-api-1:
-    image: hyperledger/sawtooth-rest-api:nightly
+    image: hyperledger/sawtooth-rest-api
     container_name: sawtooth-rest-api-default-1
     expose:
       - 8008
@@ -52,7 +52,7 @@ services:
     stop_signal: SIGKILL
 
   rest-api-2:
-    image: hyperledger/sawtooth-rest-api:nightly
+    image: hyperledger/sawtooth-rest-api
     container_name: sawtooth-rest-api-default-2
     expose:
       - 8008
@@ -67,7 +67,7 @@ services:
     stop_signal: SIGKILL
 
   rest-api-3:
-    image: hyperledger/sawtooth-rest-api:nightly
+    image: hyperledger/sawtooth-rest-api
     container_name: sawtooth-rest-api-default-3
     expose:
       - 8008
@@ -82,7 +82,7 @@ services:
     stop_signal: SIGKILL
 
   rest-api-4:
-    image: hyperledger/sawtooth-rest-api:nightly
+    image: hyperledger/sawtooth-rest-api
     container_name: sawtooth-rest-api-default-4
     expose:
       - 8008
@@ -99,7 +99,7 @@ services:
 # -------------=== shell ===-------------
 
   shell:
-    image: hyperledger/sawtooth-shell:nightly
+    image: hyperledger/sawtooth-shell
     container_name: sawtooth-shell-default
     volumes:
       - pbft-shared:/pbft-shared
@@ -113,7 +113,7 @@ services:
 # -------------=== validators ===-------------
 
   validator-0:
-    image: hyperledger/sawtooth-validator:nightly
+    image: hyperledger/sawtooth-validator
     container_name: sawtooth-validator-default-0
     expose:
       - 4004
@@ -170,7 +170,7 @@ services:
       "
 
   validator-1:
-    image: hyperledger/sawtooth-validator:nightly
+    image: hyperledger/sawtooth-validator
     container_name: sawtooth-validator-default-1
     expose:
       - 4004
@@ -205,7 +205,7 @@ services:
       "
 
   validator-2:
-    image: hyperledger/sawtooth-validator:nightly
+    image: hyperledger/sawtooth-validator
     container_name: sawtooth-validator-default-2
     expose:
       - 4004
@@ -241,7 +241,7 @@ services:
       "
 
   validator-3:
-    image: hyperledger/sawtooth-validator:nightly
+    image: hyperledger/sawtooth-validator
     container_name: sawtooth-validator-default-3
     expose:
       - 4004
@@ -278,7 +278,7 @@ services:
       "
 
   validator-4:
-    image: hyperledger/sawtooth-validator:nightly
+    image: hyperledger/sawtooth-validator
     container_name: sawtooth-validator-default-4
     expose:
       - 4004
@@ -318,68 +318,104 @@ services:
 # -------------=== pbft engines ===-------------
 
   pbft-0:
-    image: hyperledger/sawtooth-pbft-engine:nightly
+    image: hyperledger/sawtooth-pbft-engine
     container_name: sawtooth-pbft-engine-default-0
     command: pbft-engine -vv --connect tcp://validator-0:5050
     stop_signal: SIGKILL
 
   pbft-1:
-    image: hyperledger/sawtooth-pbft-engine:nightly
+    image: hyperledger/sawtooth-pbft-engine
     container_name: sawtooth-pbft-engine-default-1
     command: pbft-engine -vv --connect tcp://validator-1:5050
     stop_signal: SIGKILL
 
   pbft-2:
-    image: hyperledger/sawtooth-pbft-engine:nightly
+    image: hyperledger/sawtooth-pbft-engine
     container_name: sawtooth-pbft-engine-default-2
     command: pbft-engine -vv --connect tcp://validator-2:5050
     stop_signal: SIGKILL
 
   pbft-3:
-    image: hyperledger/sawtooth-pbft-engine:nightly
+    image: hyperledger/sawtooth-pbft-engine
     container_name: sawtooth-pbft-engine-default-3
     command: pbft-engine -vv --connect tcp://validator-3:5050
     stop_signal: SIGKILL
 
   pbft-4:
-    image: hyperledger/sawtooth-pbft-engine:nightly
+    image: hyperledger/sawtooth-pbft-engine
     container_name: sawtooth-pbft-engine-default-4
     command: pbft-engine -vv --connect tcp://validator-4:5050
     stop_signal: SIGKILL
 
 # -------------=== transaction processors ===-------------
 
-  # tp-0:
-  #   image: tp
-  #   container_name: sawtooth-tp-0
-  #   command: python3 transaction_processor.py tcp://validator-0:4004
-  #   depends_on:
-  #   - validator-0
+  tp-0:
+    image: tp
+    container_name: sawtooth-tp-0
+    command: python3 transaction_processor.py tcp://validator-0:4004
+    depends_on:
+    - validator-0
   
-  # tp-1:
-  #   image: tp
-  #   container_name: sawtooth-tp-1
-  #   command: python3 transaction_processor.py tcp://validator-1:4004
-  #   depends_on:
-  #   - validator-1
+  tp-1:
+    image: tp
+    container_name: sawtooth-tp-1
+    command: python3 transaction_processor.py tcp://validator-1:4004
+    depends_on:
+    - validator-1
 
-  # tp-2:
-  #   image: tp
-  #   container_name: sawtooth-tp-2
-  #   command: python3 transaction_processor.py tcp://validator-2:4004
-  #   depends_on:
-  #   - validator-2
+  tp-2:
+    image: tp
+    container_name: sawtooth-tp-2
+    command: python3 transaction_processor.py tcp://validator-2:4004
+    depends_on:
+    - validator-2
 
-  # tp-3:
-  #   image: tp
-  #   container_name: sawtooth-tp-3
-  #   command: python3 transaction_processor.py tcp://validator-3:4004
-  #   depends_on:
-  #   - validator-3
+  tp-3:
+    image: tp
+    container_name: sawtooth-tp-3
+    command: python3 transaction_processor.py tcp://validator-3:4004
+    depends_on:
+    - validator-3
 
-  # tp-4:
-  #   image: tp
-  #   container_name: sawtooth-tp-4
-  #   command: python3 transaction_processor.py tcp://validator-4:4004
-  #   depends_on:
-  #   - validator-4
+  tp-4:
+    image: tp
+    container_name: sawtooth-tp-4
+    command: python3 transaction_processor.py tcp://validator-4:4004
+    depends_on:
+    - validator-4
+
+
+  settings-tp-0:
+    image: hyperledger/sawtooth-settings-tp
+    container_name: sawtooth-settings-tp-0
+    depends_on:
+      - validator-0
+    entrypoint: settings-tp -vv -C tcp://validator-0:4004
+
+  settings-tp-1:
+    image: hyperledger/sawtooth-settings-tp
+    container_name: sawtooth-settings-tp-1
+    depends_on:
+      - validator-1
+    entrypoint: settings-tp -vv -C tcp://validator-1:4004
+
+  settings-tp-2:
+    image: hyperledger/sawtooth-settings-tp
+    container_name: sawtooth-settings-tp-2
+    depends_on:
+      - validator-2
+    entrypoint: settings-tp -vv -C tcp://validator-2:4004
+
+  settings-tp-3:
+    image: hyperledger/sawtooth-settings-tp
+    container_name: sawtooth-settings-tp-3
+    depends_on:
+      - validator-3
+    entrypoint: settings-tp -vv -C tcp://validator-3:4004
+
+  settings-tp-4:
+    image: hyperledger/sawtooth-settings-tp
+    container_name: sawtooth-settings-tp-4
+    depends_on:
+      - validator-4
+    entrypoint: settings-tp -vv -C tcp://validator-4:4004

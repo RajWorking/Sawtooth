@@ -16,7 +16,7 @@ signer = CryptoFactory(context).new_signer(private_key)
 
 ######
 # NUMBER of TXS per batch / block
-N = 30
+N = 25
 
 # NUMBER of Vehicles/ Blocks
 V = 10
