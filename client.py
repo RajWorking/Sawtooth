@@ -16,7 +16,7 @@ signer = CryptoFactory(context).new_signer(private_key)
 
 ######
 # NUMBER of TXS per batch / block
-N = 25
+N = 500
 
 # NUMBER of Vehicles/ Blocks
 V = 10
@@ -98,11 +98,11 @@ def main():
         txs = createTx(vi)
         print("vi: ", vi)
         insert(txs)
-        time.sleep(10)
+        time.sleep(3)
 
     end = time.time()
 
-    print("Total Time: ", end - st - 10 * V)
+    print("Total Time: ", end - st - 3 * V)
 
 
 if __name__ == '__main__':
